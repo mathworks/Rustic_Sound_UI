@@ -1,0 +1,15 @@
+The javascript and the control interfaces used in this project is based on the code webaudio-controls from g200kg:
+https://g200kg.github.io/webaudio-controls/docs/ 
+https://github.com/g200kg/webaudio-controls
+
+webaudio-controls is based on:
+
+WebAudio-Knob by Eiji Kitamura
+WebAudio-Slider by Ryoya Kawai
+WebAudio-Switch by Keisuke Ai
+Integrated and enhanced by g200kg
+Copyright (c) 2013 Eiji Kitamura / Ryoya KAWAI / Keisuke Ai / g200kg / @micbuffa / @CellouBalde Licensed under the Apache License, Version 2.0
+Knob/Switch images are from Knob Gallery
+switch_toggle.knob by az Copyright (c) 2011 CC-BY
+
+

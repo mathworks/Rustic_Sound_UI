@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<!--  -->
+<html lang="en-US" style=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<!-- Setup theme-color -->
+<!-- start theme color meta headers -->
+<meta name="theme-color" content="#353535">
+<meta name="msapplication-navbutton-color" content="#353535">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- end theme color meta headers -->
+
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/webaudio-controls/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <style>#webaudioctrl-context-menu {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  padding: 0;
+  width: 100px;
+  color:#eee;
+  background-color: #268;
+  border: solid 1px #888;
+  box-shadow: 1px 1px 2px #888;
+  font-family: sans-serif;
+  font-size: 11px;
+  line-height:1.7em;
+  text-align:center;
+  cursor:pointer;
+  color:#fff;
+  list-style: none;
+}
+#webaudioctrl-context-menu.active {
+  display: block;
+}
+.webaudioctrl-context-menu__item {
+  display: block;
+  margin: 0;
+  padding: 0;
+  color: #000;
+  background-color:#eee;
+  text-decoration: none;
+}
+.webaudioctrl-context-menu__title{
+  font-weight:bold;
+}
+.webaudioctrl-context-menu__item:last-child {
+  margin-bottom: 0;
+}
+.webaudioctrl-context-menu__item:hover {
+  background-color: #b8b8b8;
+}
+</style></head>
+  <body>
+
+<script>
+  WebAudioControlsOptions={
+    useMidi:1,
+  };
+</script>
+
+<script src="./my_webaudio-meter.js"></script>
+
+<div>
+    <div style="position:relative;background-image: url(&#39;rusticSound.png&#39;);width:1024px;height:240px;margin:30px auto;padding:0px;">
+        <webaudio-knob id="knob1" midilearn="1" midicc="1.1" style="position: absolute; left: 88px; top: 66px; height: 64px;" src="LittlePhatty.png" value="50" step="1" diameter="64" tooltip="Noise %d"><template shadowrootmode="open"><style>
+
+.webaudioctrl-tooltip{
+  display:inline-block;
+  position:absolute;
+  margin:0 -1000px;
+  z-index: 999;
+  background:#eee;
+  color:#000;
+  border:1px solid #666;
+  border-radius:4px;
+  padding:5px 10px;
+  text-align:center;
+  left:0; top:0;
+  font-size:11px;
+  opacity:0;
+  visibility:hidden;
+}
+.webaudioctrl-tooltip:before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border: 8px solid transparent;
+  border-top: 8px solid #666;
+}
+.webaudioctrl-tooltip:after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border: 6px solid transparent;
+  border-top: 6px solid #eee;
+}
+
+:host{
+  display:inline-block;
+  margin:0;
+  padding:0;
+  cursor:pointer;
+  font-family: sans-serif;
+  font-size: 11px;
+}
+.webaudio-knob-body{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  vertical-align:bottom;
+  white-space:pre;
+}
+</style>
+<div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-position: 0px -3456px; transform: rotate(0deg); background-image: url(&quot;LittlePhatty.png&quot;); background-size: 64px 6464px; width: 64px; height: 64px; outline: none;"><div class="webaudioctrl-tooltip" style="transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; display: inline-block; width: auto; height: auto; left: 981.578px; top: -35.8333px;">Knob1 tooltip 54</div><div part="label" class="webaudioctrl-label" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%);"><slot></slot></div></div>
+</template></webaudio-knob>
+        <webaudio-knob midilearn="1" midicc="8.7" id="knob2" style="position: absolute; left: 168px; top: 66px; height: 64px;" src="LittlePhatty.png" value="3" min="0" max="3" step="0.01" diameter="64" sprites="100" tooltip="Dust Pop %.1f" ><template shadowrootmode="open"><style>
+
+.webaudioctrl-tooltip{
+  display:inline-block;
+  position:absolute;
+  margin:0 -1000px;
+  z-index: 999;
+  background:#eee;
+  color:#000;
+  border:1px solid #666;
+  border-radius:4px;
+  padding:5px 10px;
+  text-align:center;
+  left:0; top:0;
+  font-size:11px;
+  opacity:0;
+  visibility:hidden;
+}
+.webaudioctrl-tooltip:before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border: 8px solid transparent;
+  border-top: 8px solid #666;
+}
+.webaudioctrl-tooltip:after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border: 6px solid transparent;
+  border-top: 6px solid #eee;
+}
+
+:host{
+  display:inline-block;
+  margin:0;
+  padding:0;
+  cursor:pointer;
+  font-family: sans-serif;
+  font-size: 11px;
+}
+.webaudio-knob-body{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  vertical-align:bottom;
+  white-space:pre;
+}
+</style>
+<div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-position: 0px -2240px; transform: rotate(0deg); background-image: url(&quot;LittlePhatty.png&quot;); background-size: 64px 6464px; width: 64px; height: 64px; outline: none;"><div class="webaudioctrl-tooltip" style="transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; display: inline-block; width: auto; height: auto; left: 987.693px; top: -52.3333px;">Knob2 tooltip <br> 234.98 Hz</div><div part="label" class="webaudioctrl-label" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%);"><slot></slot></div></div>
+</template></webaudio-knob>
+        <webaudio-knob midilearn="1" midicc="8.7" id="knob4" style="position: absolute; left: 429px; top: 66px; height: 64px;" src="LittlePhatty.png" value="0.6" min="0.02" max="3" step="0.01" diameter="64" sprites="100" tooltip="HPF fc &lt;br/&gt; %.2f Hz" conv="(x)=&gt;{return x/3*5000}"><template shadowrootmode="open"><style>
+
+  .webaudioctrl-tooltip{
+    display:inline-block;
+    position:absolute;
+    margin:0 -1000px;
+    z-index: 999;
+    background:#eee;
+    color:#000;
+    border:1px solid #666;
+    border-radius:4px;
+    padding:5px 10px;
+    text-align:center;
+    left:0; top:0;
+    font-size:11px;
+    opacity:0;
+    visibility:hidden;
+  }
+  .webaudioctrl-tooltip:before{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -8px;
+    border: 8px solid transparent;
+    border-top: 8px solid #666;
+  }
+  .webaudioctrl-tooltip:after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+    border: 6px solid transparent;
+    border-top: 6px solid #eee;
+  }
+  
+  :host{
+    display:inline-block;
+    margin:0;
+    padding:0;
+    cursor:pointer;
+    font-family: sans-serif;
+    font-size: 11px;
+  }
+  .webaudio-knob-body{
+    display:inline-block;
+    position:relative;
+    margin:0;
+    padding:0;
+    vertical-align:bottom;
+    white-space:pre;
+  }
+  </style>
+  <div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-position: 0px -2240px; transform: rotate(0deg); background-image: url(&quot;LittlePhatty.png&quot;); background-size: 64px 6464px; width: 64px; height: 64px; outline: none;"><div class="webaudioctrl-tooltip" style="transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; display: inline-block; width: auto; height: auto; left: 987.693px; top: -52.3333px;">Knob4 tooltip <br> 234.98 Hz</div><div part="label" class="webaudioctrl-label" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%);"><slot></slot></div></div>
+  </template></webaudio-knob>
+          <webaudio-knob midilearn="1" midicc="8.7" id="knob5" style="position: absolute; left: 510px; top: 66px; height: 64px;" src="LittlePhatty.png" value="1.8" min="0.02" max="3" step="0.01" diameter="64" sprites="100" tooltip="LPF fc &lt;br/&gt; %.2f Hz" conv="(x)=&gt;{return x/3*5000}"><template shadowrootmode="open"><style>
+
+    .webaudioctrl-tooltip{
+      display:inline-block;
+      position:absolute;
+      margin:0 -1000px;
+      z-index: 999;
+      background:#eee;
+      color:#000;
+      border:1px solid #666;
+      border-radius:4px;
+      padding:5px 10px;
+      text-align:center;
+      left:0; top:0;
+      font-size:11px;
+      opacity:0;
+      visibility:hidden;
+    }
+    .webaudioctrl-tooltip:before{
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -8px;
+      border: 8px solid transparent;
+      border-top: 8px solid #666;
+    }
+    .webaudioctrl-tooltip:after{
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -6px;
+      border: 6px solid transparent;
+      border-top: 6px solid #eee;
+    }
+    
+    :host{
+      display:inline-block;
+      margin:0;
+      padding:0;
+      cursor:pointer;
+      font-family: sans-serif;
+      font-size: 11px;
+    }
+    .webaudio-knob-body{
+      display:inline-block;
+      position:relative;
+      margin:0;
+      padding:0;
+      vertical-align:bottom;
+      white-space:pre;
+    }
+    </style>
+    <div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-position: 0px -2240px; transform: rotate(0deg); background-image: url(&quot;LittlePhatty.png&quot;); background-size: 64px 6464px; width: 64px; height: 64px; outline: none;"><div class="webaudioctrl-tooltip" style="transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; display: inline-block; width: auto; height: auto; left: 987.693px; top: -52.3333px;">Knob5 tooltip <br> 234.98 Hz</div><div part="label" class="webaudioctrl-label" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%);"><slot></slot></div></div>
+    </template></webaudio-knob>
+        <webaudio-knob midilearn="1" midicc="1.22" id="knob3" style="position: absolute; left: 272px; top: 47px; height: 128px;" src="vernier.png" value="30" max="100" step="1" diameter="128" sprites="50" valuetip="0" tooltip="Volume %d"><template shadowrootmode="open"><style>
+
+.webaudioctrl-tooltip{
+  display:inline-block;
+  position:absolute;
+  margin:0 -1000px;
+  z-index: 999;
+  background:#eee;
+  color:#000;
+  border:1px solid #666;
+  border-radius:4px;
+  padding:5px 10px;
+  text-align:center;
+  left:0; top:0;
+  font-size:11px;
+  opacity:0;
+  visibility:hidden;
+}
+.webaudioctrl-tooltip:before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border: 8px solid transparent;
+  border-top: 8px solid #666;
+}
+.webaudioctrl-tooltip:after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border: 6px solid transparent;
+  border-top: 6px solid #eee;
+}
+
+:host{
+  display:inline-block;
+  margin:0;
+  padding:0;
+  cursor:pointer;
+  font-family: sans-serif;
+  font-size: 11px;
+}
+.webaudio-knob-body{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  vertical-align:bottom;
+  white-space:pre;
+}
+</style>
+<div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-position: 0px -4224px; transform: rotate(0deg); background-image: url(&quot;vernier.png&quot;); background-size: 128px 6528px; width: 128px; height: 128px; outline: none;"><div class="webaudioctrl-tooltip" style="transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; display: inline-block; width: auto; height: auto; left: 1037.43px; top: -35.8333px;">Knob3</div><div part="label" class="webaudioctrl-label" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%);"><slot></slot></div></div>
+</template></webaudio-knob>
+<webaudio-param style="position:absolute;left:328px;top:162px" link="knob3"><template shadowrootmode="open"><style>
+
+  .webaudioctrl-tooltip{
+    display:inline-block;
+    position:absolute;
+    margin:0 -1000px;
+    z-index: 999;
+    background:#eee;
+    color:#000;
+    border:1px solid #666;
+    border-radius:4px;
+    padding:5px 10px;
+    text-align:center;
+    left:0; top:0;
+    font-size:11px;
+    opacity:0;
+    visibility:hidden;
+  }
+  .webaudioctrl-tooltip:before{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -8px;
+    border: 8px solid transparent;
+    border-top: 8px solid #666;
+  }
+  .webaudioctrl-tooltip:after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+    border: 6px solid transparent;
+    border-top: 6px solid #eee;
+  }
+  
+  :host{
+    display:inline-block;
+    user-select:none;
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    font-size: 8px;
+    cursor:pointer;
+    position:relative;
+    vertical-align:baseline;
+  }
+  .webaudio-param-body{
+    display:inline-block;
+    position:relative;
+    text-align:center;
+    background:none;
+    margin:0;
+    padding:0;
+    font-family:sans-serif;
+    font-size:11px;
+    vertical-align:bottom;
+    border:none;
+  }
+  </style>
+  <input class="webaudio-param-body" value="0" tabindex="1" touch-action="none" style="color: rgb(255, 255, 255); background-color: rgb(0, 0, 0); width: 32px; height: 20px; font-size: 9px;"><div class="webaudioctrl-tooltip" style="transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden;"></div>
+  </template></webaudio-param>
+
+        <webaudio-knob midilearn="1" midicc="1.22" id="vumeter1" style="position: absolute; left: 712px; top: 47px; height: 128px;" src="Vintage_VUMeter_2.png" value="30" max="100" step="1" diameter="128" sprites="50" valuetip="0" tooltip="VU meter L"><template shadowrootmode="open"><style>
+
+  .webaudioctrl-tooltip{
+    display:inline-block;
+    position:absolute;
+    margin:0 -1000px;
+    z-index: 999;
+    background:#eee;
+    color:#000;
+    border:1px solid #666;
+    border-radius:4px;
+    padding:5px 10px;
+    text-align:center;
+    left:0; top:0;
+    font-size:11px;
+    opacity:0;
+    visibility:hidden;
+  }
+  .webaudioctrl-tooltip:before{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -8px;
+    border: 8px solid transparent;
+    border-top: 8px solid #666;
+  }
+  .webaudioctrl-tooltip:after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+    border: 6px solid transparent;
+    border-top: 6px solid #eee;
+  }
+  
+  :host{
+    display:inline-block;
+    margin:0;
+    padding:0;
+    cursor:pointer;
+    font-family: sans-serif;
+    font-size: 11px;
+  }
+  .webaudio-knob-body{
+    display:inline-block;
+    position:relative;
+    margin:0;
+    padding:0;
+    vertical-align:bottom;
+    white-space:pre;
+  }
+  </style>
+  <div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-position: 0px -4224px; transform: rotate(0deg); background-image: url(&quot;Vintage_VUMeter_2.png&quot;); background-size: 128px 6528px; width: 128px; height: 128px; outline: none;"><div class="webaudioctrl-tooltip" style="transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; display: inline-block; width: auto; height: auto; left: 1037.43px; top: -35.8333px;">VU meter1</div><div part="label" class="webaudioctrl-label" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%);"><slot></slot></div></div>
+  </template></webaudio-knob>
+
+          <webaudio-knob midilearn="1" midicc="1.22" id="vumeter2" style="position: absolute; left: 864px; top: 47px; height: 128px;" src="Vintage_VUMeter_2.png" value="30" max="100" step="1" diameter="128" sprites="50" valuetip="0" tooltip="VU meter R"><template shadowrootmode="open"><style>
+
+    .webaudioctrl-tooltip{
+      display:inline-block;
+      position:absolute;
+      margin:0 -1000px;
+      z-index: 999;
+      background:#eee;
+      color:#000;
+      border:1px solid #666;
+      border-radius:4px;
+      padding:5px 10px;
+      text-align:center;
+      left:0; top:0;
+      font-size:11px;
+      opacity:0;
+      visibility:hidden;
+    }
+    .webaudioctrl-tooltip:before{
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -8px;
+      border: 8px solid transparent;
+      border-top: 8px solid #666;
+    }
+    .webaudioctrl-tooltip:after{
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -6px;
+      border: 6px solid transparent;
+      border-top: 6px solid #eee;
+    }
+    
+    :host{
+      display:inline-block;
+      margin:0;
+      padding:0;
+      cursor:pointer;
+      font-family: sans-serif;
+      font-size: 11px;
+    }
+    .webaudio-meter-body{
+      display:inline-block;
+      position:relative;
+      margin:0;
+      padding:0;
+      vertical-align:bottom;
+      white-space:pre;
+    }
+    </style>
+    <div class="webaudio-meter-body" tabindex="1" touch-action="none" style="background-position: 0px -4224px; transform: rotate(0deg); background-image: url(&quot;Vintage_VUMeter_2.png&quot;); background-size: 128px 6528px; width: 128px; height: 128px; outline: none;"><div class="webaudioctrl-tooltip" style="transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; display: inline-block; width: auto; height: auto; left: 1037.43px; top: -35.8333px;">VU meter1</div><div part="label" class="webaudioctrl-label" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%);"><slot></slot></div></div>
+    </template></webaudio-knob>
+    
+        <webaudio-slider midilearn="1" midicc="1.23" id="slider1" style="position:absolute;left:615px;top:41px" src="vsliderbody.png" knobsrc="vsliderknob.png" value="0" min="0" max="100" step="1" basewidth="24" baseheight="128" knobwidth="24" knobheight="24" ditchlength="100" tooltip="Reverb Delay %d"><template shadowrootmode="open"><style>
+
+.webaudioctrl-tooltip{
+  display:inline-block;
+  position:absolute;
+  margin:0 -1000px;
+  z-index: 999;
+  background:#eee;
+  color:#000;
+  border:1px solid #666;
+  border-radius:4px;
+  padding:5px 10px;
+  text-align:center;
+  left:0; top:0;
+  font-size:11px;
+  opacity:0;
+  visibility:hidden;
+}
+.webaudioctrl-tooltip:before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border: 8px solid transparent;
+  border-top: 8px solid #666;
+}
+.webaudioctrl-tooltip:after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border: 6px solid transparent;
+  border-top: 6px solid #eee;
+}
+
+:host{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+  font-size: 11px;
+  cursor:pointer;
+}
+.webaudio-slider-body{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  vertical-align:bottom;
+  white-space:pre;
+}
+.webaudio-slider-knob{
+  display:inline-block;
+  position:absolute;
+  margin:0;
+  padding:0;
+}
+</style>
+<div class="webaudio-slider-body" tabindex="1" touch-action="none" style="background-image: url(&quot;vsliderbody.png&quot;); background-size: 100% 100%; width: 24px; height: 128px;"><div class="webaudio-slider-knob" touch-action="none" style="background-image: url(&quot;vsliderknob.png&quot;); background-size: 100% 100%; width: 24px; height: 24px; left: 0px; top: 102px;"></div><div class="webaudioctrl-tooltip" style="display: inline-block; width: auto; height: auto; transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; left: 982.38px; top: -35.8333px;">Slider-L</div><div part="label" class="webaudioctrl-label" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%);"><slot></slot></div></div>
+</template></webaudio-slider>
+        <webaudio-slider midilearn="1" midicc="1.24" id="slider2" style="position:absolute;left:660px;top:41px" src="vsliderbody.png" knobsrc="vsliderknob.png" value="30" min="0" max="100" step="1" basewidth="24" baseheight="128" knobwidth="24" knobheight="24" ditchlength="100" units="%" tooltip="Reverb Level %d"><template shadowrootmode="open"><style>
+
+.webaudioctrl-tooltip{
+  display:inline-block;
+  position:absolute;
+  margin:0 -1000px;
+  z-index: 999;
+  background:#eee;
+  color:#000;
+  border:1px solid #666;
+  border-radius:4px;
+  padding:5px 10px;
+  text-align:center;
+  left:0; top:0;
+  font-size:11px;
+  opacity:0;
+  visibility:hidden;
+}
+.webaudioctrl-tooltip:before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border: 8px solid transparent;
+  border-top: 8px solid #666;
+}
+.webaudioctrl-tooltip:after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border: 6px solid transparent;
+  border-top: 6px solid #eee;
+}
+
+:host{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+  font-size: 11px;
+  cursor:pointer;
+}
+.webaudio-slider-body{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  vertical-align:bottom;
+  white-space:pre;
+}
+.webaudio-slider-knob{
+  display:inline-block;
+  position:absolute;
+  margin:0;
+  padding:0;
+}
+</style>
+<div class="webaudio-slider-body" tabindex="1" touch-action="none" style="background-image: url(&quot;vsliderbody.png&quot;); background-size: 100% 100%; width: 24px; height: 128px;"><div class="webaudio-slider-knob" touch-action="none" style="background-image: url(&quot;vsliderknob.png&quot;); background-size: 100% 100%; width: 24px; height: 24px; left: 0px; top: 102px;"></div><div class="webaudioctrl-tooltip"></div><div part="label" class="webaudioctrl-label" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%);"><slot></slot></div></div>
+</template></webaudio-slider>
+        <webaudio-switch midilearn="1" id="switchA" style="position:absolute;left:12px;top:53px" src="switch_toggle.png" value="0" height="56" width="56" tooltip="Play switch"><template shadowrootmode="open"><style>
+
+.webaudioctrl-tooltip{
+  display:inline-block;
+  position:absolute;
+  margin:0 -1000px;
+  z-index: 999;
+  background:#eee;
+  color:#000;
+  border:1px solid #666;
+  border-radius:4px;
+  padding:5px 10px;
+  text-align:center;
+  left:0; top:0;
+  font-size:11px;
+  opacity:0;
+  visibility:hidden;
+}
+.webaudioctrl-tooltip:before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border: 8px solid transparent;
+  border-top: 8px solid #666;
+}
+.webaudioctrl-tooltip:after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border: 6px solid transparent;
+  border-top: 6px solid #eee;
+}
+
+:host{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+  font-size: 11px;
+  cursor:pointer;
+}
+.webaudio-switch-body{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  vertical-align:bottom;
+  white-space:pre;
+}
+.webaudioctrl-label{
+  position:absolute;
+  left:50%;
+  top:50%;
+}
+</style>
+<div class="webaudio-switch-body" tabindex="1" touch-action="none" style="background-image: url(&quot;switch_toggle.png&quot;); background-size: 100% 200%; width: 56px; height: 56px; background-position: 0px 0px;"><div class="webaudioctrl-tooltip"></div><div part="label" class="webaudioctrl-label" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%);"><slot></slot></div></div>
+</template></webaudio-switch>
+        <webaudio-switch midilearn="1" id="switchB" style="position:absolute;left:12px;top:117px" src="switch_toggle.png" value="0" height="56" width="56" tooltip="ByPass"><template shadowrootmode="open"><style>
+
+.webaudioctrl-tooltip{
+  display:inline-block;
+  position:absolute;
+  margin:0 -1000px;
+  z-index: 999;
+  background:#eee;
+  color:#000;
+  border:1px solid #666;
+  border-radius:4px;
+  padding:5px 10px;
+  text-align:center;
+  left:0; top:0;
+  font-size:11px;
+  opacity:0;
+  visibility:hidden;
+}
+.webaudioctrl-tooltip:before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border: 8px solid transparent;
+  border-top: 8px solid #666;
+}
+.webaudioctrl-tooltip:after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border: 6px solid transparent;
+  border-top: 6px solid #eee;
+}
+
+:host{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+  font-size: 11px;
+  cursor:pointer;
+}
+.webaudio-switch-body{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  vertical-align:bottom;
+  white-space:pre;
+}
+.webaudioctrl-label{
+  position:absolute;
+  left:50%;
+  top:50%;
+}
+</style>
+<div class="webaudio-switch-body" tabindex="1" touch-action="none" style="background-image: url(&quot;switch_toggle.png&quot;); background-size: 100% 200%; width: 56px; height: 56px; background-position: 0px 0px;"><div class="webaudioctrl-tooltip"></div><div part="label" class="webaudioctrl-label" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%);"><slot></slot></div></div>
+</template></webaudio-switch>
+	</div>
+</div>
+
+<script>
+webAudioControlsWidgetManager.addMidiListener(function(event) {
+    var data = event.data;
+    var channel = data[0] & 0xf;
+    var controlNumber = data[1];
+
+    console.log("Midi event hook: data:[" + data + "] channel:" + channel + " cc:"+controlNumber);
+});
+</script>
+
+<script type="text/javascript">      
+  function setup(htmlComponent) {           
+      let slider1 = document.getElementById("slider1");
+      slider1.addEventListener("change", function(event) {
+      htmlComponent.sendEventToMATLAB("slied1",event.target.value);
+      });        
+      let slider2 = document.getElementById("slider2");
+      slider2.addEventListener("change", function(event) {
+      htmlComponent.sendEventToMATLAB("slied2",event.target.value);
+      });
+      let switchB = document.getElementById("switchB");
+      switchB.addEventListener("change", function(event) {
+        var isChecked = switchB.checked;
+        if (isChecked){
+           htmlComponent.sendEventToMATLAB("ButtonBClicked",1); 
+        }
+        else {
+          htmlComponent.sendEventToMATLAB("ButtonBClicked",0);
+        }
+      });
+      let switchA = document.getElementById("switchA");
+      switchA.addEventListener("change", function(event) {
+        var isChecked = switchA.checked;
+        if (isChecked){
+           htmlComponent.sendEventToMATLAB("ButtonAClicked",1); 
+        }
+        else {
+          htmlComponent.sendEventToMATLAB("ButtonAClicked",0);
+        }
+      });      
+      let vumeter_2 = document.getElementById("vumeter2");
+      htmlComponent.addEventListener("vumeter2", function(event) {
+        vumeter_2.value = event.Data;
+      });
+      let vumeter_1 = document.getElementById("vumeter1");
+      htmlComponent.addEventListener("vumeter1", function(event) {
+        vumeter_1.value = event.Data;                        
+      });
+      let knob_1 = document.getElementById("knob1");
+      knob_1.addEventListener("change", function(event) {
+        htmlComponent.sendEventToMATLAB("knob1",event.target.value);
+      });
+      let knob_2 = document.getElementById("knob2");
+      knob_2.addEventListener("change", function(event) {
+        htmlComponent.sendEventToMATLAB("knob2",event.target.value);                
+      });
+      let knob_3 = document.getElementById("knob3");
+      knob_3.addEventListener("change", function(event) {
+        htmlComponent.sendEventToMATLAB("knob3",event.target.value);
+      });
+      let knob_4 = document.getElementById("knob4");
+      knob_4.addEventListener("change", function(event) {
+        htmlComponent.sendEventToMATLAB("knob4",event.target.value);
+      });
+      let knob_5 = document.getElementById("knob5");
+      knob_5.addEventListener("change", function(event) {
+        htmlComponent.sendEventToMATLAB("knob5",event.target.value);
+      });                  
+  }
+</script>
+
+</body></html>
